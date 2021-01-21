@@ -102,4 +102,19 @@ public class Users extends AppCompatActivity {
 
         pd.dismiss();
     }
+
+    public void onClick(View v) {
+        if (v.getId() == R.id.chatButton) {
+            Intent i = new Intent(this, Chat.class);
+            startActivity(i);
+        }
+        if (v.getId() == R.id.profileButton) {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+        }
+        if (v.getId() == R.id.searchButton) {
+            Intent i = new Intent(this, Search.class);
+            startActivity(i);
+        }
+    }
 }

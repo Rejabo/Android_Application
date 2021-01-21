@@ -17,23 +17,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void onClick(View v) {
-        if(v.getId()==R.id.chatButton){
-            Intent i = new Intent(this, Register.class);
-            startActivity(i);
-        }
-
-        /*if(v.getId()==R.id.searchButton){
-            Intent i = new Intent(this, Search.class);
-            startActivity(i);
-        }*/
-
-         /*if(v.getId()==R.id.profileButton){
-            Intent i = new Intent(this, Profile.class);
-            startActivity(i);
-        }*/
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -63,5 +46,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
+    public void onClick(View v) {
+        if (v.getId() == R.id.chatButton) {
+            Intent i = new Intent(this, Users.class);
+            startActivity(i);
+        }
+        if (v.getId() == R.id.profileButton) {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+        }
+        if (v.getId() == R.id.searchButton) {
+            Intent i = new Intent(this, Search.class);
+            startActivity(i);
+        }
+    }
 }
