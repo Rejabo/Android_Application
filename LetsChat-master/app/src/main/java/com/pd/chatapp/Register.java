@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 public class Register extends AppCompatActivity {
 
+
     private ActivityRegisterBinding binding;
     private String user, pass;
 
