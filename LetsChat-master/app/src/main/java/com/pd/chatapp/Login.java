@@ -3,6 +3,7 @@ package com.pd.chatapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ public class Login extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
     private String user, pass;
+    public String writtenuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,8 @@ public class Login extends AppCompatActivity {
                                 UserDetails.username = user;
                                 UserDetails.password = pass;
                                 startActivity(new Intent(Login.this, Users.class));
+                                writtenuser = user;
+                                Log.d("Writtenuser", writtenuser);
                             } else {
                                 Toast.makeText(Login.this, "incorrect password", Toast.LENGTH_LONG).show();
                             }
@@ -83,6 +87,7 @@ public class Login extends AppCompatActivity {
 
     /*** Reset Data and Focus **/
     private void resetDataAndFocus() {
+
         binding.username.setText("");
         binding.password.setText("");
         binding.password.clearFocus();
