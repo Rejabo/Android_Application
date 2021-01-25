@@ -37,6 +37,64 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:128887013609:android:8ff70612499159e05cb078",
+        "android_client_info": {
+          "package_name": "com.example.demofirebasetorecycler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128887013609-n25rnug21kj7g1203vt9b069sdjonk8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2CAq-pgs7wiXNAtFdkddT6-5QKNM4qPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128887013609-n25rnug21kj7g1203vt9b069sdjonk8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128887013609:android:cdcb919a8afcfb815cb078",
+        "android_client_info": {
+          "package_name": "com.example.triptogether"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128887013609-n25rnug21kj7g1203vt9b069sdjonk8i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2CAq-pgs7wiXNAtFdkddT6-5QKNM4qPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128887013609-n25rnug21kj7g1203vt9b069sdjonk8i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:128887013609:android:d4129d76e55dc4045cb078",
         "android_client_info": {
           "package_name": "com.pd.chatapp"
