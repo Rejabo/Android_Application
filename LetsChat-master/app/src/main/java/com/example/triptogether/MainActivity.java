@@ -1,4 +1,4 @@
-package com.pd.chatapp;
+package com.example.triptogether;
 
 import android.content.Intent;
 import android.os.Bundle;

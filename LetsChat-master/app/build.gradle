@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
     defaultConfig {
-        applicationId "com.pd.chatapp"
+        applicationId "com.example.triptogether"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1

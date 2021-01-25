@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lets Chat</string>
+    <string name="app_name">TripTogether</string>
     <string name="no_users_found">No users found!</string>
     <string name="login">Login</string>
     <string name="enter_username">enter username</string>

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:baselineAligned="false"
     android:contentDescription="ChatButton"
-    tools:context="com.pd.chatapp.Users"
+    tools:context="com.example.triptogether.Users"
     tools:viewBindingIgnore="true">
 
     <TextView

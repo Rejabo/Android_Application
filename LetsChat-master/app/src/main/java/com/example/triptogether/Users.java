@@ -1,4 +1,4 @@
-package com.pd.chatapp;
+package com.example.triptogether;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
