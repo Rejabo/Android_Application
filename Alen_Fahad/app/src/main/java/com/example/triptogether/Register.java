@@ -68,10 +68,10 @@ public class Register extends AppCompatActivity {
 
                             if (!obj.has(user)) {
                                 reference.child(user).child("password").setValue(pass);
-                                reference.child(user).child("course").setValue("x");
-                                reference.child(user).child("email").setValue("x");
-                                reference.child(user).child("name").setValue("x");
-                                reference.child(user).child("purl").setValue("x");
+                                reference.child(user).child("course").setValue("");
+                                reference.child(user).child("email").setValue("");
+                                reference.child(user).child("name").setValue("");
+                                reference.child(user).child("purl").setValue("");
 
 
 

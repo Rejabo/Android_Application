@@ -37,7 +37,7 @@ public class Search extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
     private EditText fromCity, toCity, date, time;
-    private Button addTrip, cancel;
+    private Button addTrip, cancel,deleteTrips;
 
 
     @Override
@@ -51,7 +51,7 @@ public class Search extends AppCompatActivity {
 
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users").orderByChild("name"), model.class)
                        .build();
 
         adapter=new myadapter(options);
@@ -147,6 +147,7 @@ public class Search extends AppCompatActivity {
 
         addTrip = (Button) tripPopupView.findViewById(R.id.addTripButton);
         cancel = (Button) tripPopupView.findViewById(R.id.cancelButton);
+        deleteTrips = (Button) tripPopupView.findViewById(R.id.deleteTripsButton);
 
         dialogBuilder.setView(tripPopupView);
         dialog = dialogBuilder.create();
@@ -198,6 +199,27 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // define cancelbutton here
+                dialog.dismiss();
+            }
+        });
+
+
+        deleteTrips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // define cancelbutton here
+
+                DatabaseReference myRef0 = db.getReference("users").child(UserDetails.username).child("trips");
+                myRef.setValue("");
+
+                DatabaseReference myRef = db.getReference("users").child(UserDetails.username).child("name");
+                myRef.setValue("");
+
+                DatabaseReference myRef1 = db.getReference("users").child(UserDetails.username).child("course");
+                myRef1.setValue("");
+
+                DatabaseReference myRef2 = db.getReference("users").child(UserDetails.username).child("email");
+                myRef2.setValue("");
                 dialog.dismiss();
             }
         });

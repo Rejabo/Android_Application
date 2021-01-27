@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/account_circle/baseline_account_circle_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/indeterminate_check_box/baseline_indeterminate_check_box_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,9 +28,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="9d31b6" />
-                            <entry key="opacityPercent" value="37" />
-                            <entry key="outputName" value="ic_baseline_account_circle_24" />
+                            <entry key="color" value="181818" />
+                            <entry key="opacityPercent" value="94" />
+                            <entry key="outputName" value="ic_baseline_indeterminate_check_box_24" />
                             <entry key="sourceFile" value="C:\Users\aleng\Documents\TripTogether-master\LetsChat-master" />
                           </map>
                         </option>
