@@ -26,12 +26,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
             case R.id.item1:
                 Toast.makeText(this, "Item 1 selected", Toast.LENGTH_SHORT).show();
+
                 return true;
+
             case R.id.item2:
-                Toast.makeText(this, "Item 2 selected", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Logging out", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, Login.class);
+                startActivity(i);
+                finish();
                 return true;
+
             case R.id.item3:
                 Toast.makeText(this, "Item 3 selected", Toast.LENGTH_SHORT).show();
                 return true;

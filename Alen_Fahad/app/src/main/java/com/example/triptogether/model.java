@@ -2,24 +2,24 @@ package com.example.triptogether;
 
 public class model
 {
-  String name,course,email,purl;
+  String trips,course,email,purl;
     model()
     {
 
     }
     public model(String name, String course, String email, String purl) {
-        this.name = name;
-        this.course = course;
-        this.email = email;
-        this.purl = purl;
+        this.trips = name; // toCity
+        this.course = course; //fromCity
+        this.email = email; // date
+        this.purl = purl; // time
     }
 
     public String getName() {
-        return name;
+        return trips;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.trips = name;
     }
 
     public String getCourse() {

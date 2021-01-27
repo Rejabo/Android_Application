@@ -2,7 +2,9 @@ package com.example.triptogether;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -12,31 +14,30 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.firebase.client.Firebase;
-import com.example.triptogether.databinding.ActivityRegisterBinding;
+import com.example.triptogether.databinding.ActivityLoginBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class Register extends AppCompatActivity {
+public class Login extends AppCompatActivity {
 
-
-    private ActivityRegisterBinding binding;
+    private ActivityLoginBinding binding;
     private String user, pass;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityRegisterBinding.inflate(getLayoutInflater());
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
-        Firebase.setAndroidContext(this);
+        //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        binding.login.setOnClickListener(v ->
-                startActivity(new Intent(Register.this, Login.class)));
+        binding.register.setOnClickListener(v ->
+                startActivity(new Intent(Login.this, Register.class)));
 
-        binding.registerButton.setOnClickListener(v -> {
+        binding.loginButton.setOnClickListener(v -> {
             user = binding.username.getText().toString();
             pass = binding.password.getText().toString();
 
@@ -44,41 +45,30 @@ public class Register extends AppCompatActivity {
                 binding.username.setError("can't be blank");
             } else if (pass.equals("")) {
                 binding.password.setError("can't be blank");
-            } else if (!user.matches("[A-Za-z0-9]+")) {
-                binding.username.setError("only alphabet or number allowed");
-            } else if (user.length() < 5) {
-                binding.username.setError("at least 5 characters long");
-            } else if (pass.length() < 5) {
-                binding.password.setError("at least 5 characters long");
             } else {
                 String url = "https://androidchattapp-8f815-default-rtdb.firebaseio.com/users.json";
-                final ProgressDialog pd = new ProgressDialog(Register.this);
+                final ProgressDialog pd = new ProgressDialog(Login.this);
                 pd.setMessage("Loading...");
                 pd.show();
 
                 StringRequest request = new StringRequest(Request.Method.GET, url, response -> {
-                    Firebase reference = new Firebase("https://androidchattapp-8f815-default-rtdb.firebaseio.com/users");
-
                     if (response.equals("null")) {
-                        reference.child(user).child("password").setValue(pass);
-                        Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "user not found", Toast.LENGTH_LONG).show();
                     } else {
                         try {
                             JSONObject obj = new JSONObject(response);
 
                             if (!obj.has(user)) {
-                                reference.child(user).child("password").setValue(pass);
-                                Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
-
-                                startActivity(new Intent(getApplicationContext(), Login.class));
-                                finish();
-                            } else {
-                                Toast.makeText(Register.this, "username already exists", Toast.LENGTH_LONG).show();
-
-                                // reset focus
+                                Toast.makeText(Login.this, "user not found", Toast.LENGTH_LONG).show();
                                 resetDataAndFocus();
-                            }
+                            } else if (obj.getJSONObject(user).getString("password").equals(pass)) {
+                                UserDetails.username = user;
+                                UserDetails.password = pass;
+                                startActivity(new Intent(Login.this, Users.class));
 
+                            } else {
+                                Toast.makeText(Login.this, "incorrect password", Toast.LENGTH_LONG).show();
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -90,9 +80,10 @@ public class Register extends AppCompatActivity {
                     pd.dismiss();
                 });
 
-                RequestQueue rQueue = Volley.newRequestQueue(Register.this);
+                RequestQueue rQueue = Volley.newRequestQueue(Login.this);
                 rQueue.add(request);
             }
+
         });
     }
 
@@ -103,4 +94,10 @@ public class Register extends AppCompatActivity {
         binding.password.clearFocus();
         binding.password.clearFocus();
     }
+
+
+    @Override
+    public void onBackPressed() {
+        return;
+        }
 }
