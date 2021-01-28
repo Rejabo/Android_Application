@@ -61,6 +61,6 @@
         android:text="@string/click_here_to_login"
         android:textSize="20sp"
         android:gravity="center"
-        android:id="@+id/login"/>
+        android:id="@+id/loginButton"/>
 
 </LinearLayout>

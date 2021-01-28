@@ -109,7 +109,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_baseline_indeterminate_check_box_24"
         android:onClick="onClick"
-        android:text="deleteTrips"
         app:layout_constraintBottom_toBottomOf="@+id/newlisticon"
         app:layout_constraintEnd_toEndOf="@+id/newlisticon"
         app:layout_constraintHorizontal_bias="1.0"

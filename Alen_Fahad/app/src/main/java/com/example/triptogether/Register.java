@@ -33,7 +33,7 @@ public class Register extends AppCompatActivity {
 
         Firebase.setAndroidContext(this);
 
-        binding.login.setOnClickListener(v ->
+        binding.loginButton.setOnClickListener(v ->
                 startActivity(new Intent(Register.this, Login.class)));
 
         binding.registerButton.setOnClickListener(v -> {

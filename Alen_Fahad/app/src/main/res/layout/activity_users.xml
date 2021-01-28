@@ -31,6 +31,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
+        android:background="@drawable/background_of_ui"
         app:layout_constraintBottom_toTopOf="@+id/searchButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
