@@ -70,7 +70,46 @@
         app:layout_constraintBottom_toTopOf="@+id/searchButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="119dp"
+        android:layout_height="88dp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132"
+        app:srcCompat="@drawable/user1" />
+
+    <TextView
+        android:id="@+id/profileDescription"
+        android:layout_width="380dp"
+        android:layout_height="262dp"
+        android:text="I am flexible, reliable and possess excellent time keeping skills. I am an enthusiastic, self-motivated, reliable, responsible and hard working person. I am a mature team worker and adaptable to all challenging situations. I am able to work well both in a team environment as well as using own initiative."
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/searchButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.583" />
+
+    <Button
+        android:id="@+id/editDescriptionButton"
+        android:layout_width="92dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:onClick="onClick"
+        android:text="edit"
+        app:layout_constraintBottom_toTopOf="@+id/searchButton"
+        app:layout_constraintStart_toStartOf="@+id/profileDescription"
+        app:layout_constraintTop_toBottomOf="@+id/profileDescription"
+        app:layout_constraintVertical_bias="0.166" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
