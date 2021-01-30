@@ -1,9 +1,14 @@
 package com.example.triptogether;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,6 +17,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
@@ -67,15 +74,17 @@ public class Chat extends AppCompatActivity {
                 Map map = dataSnapshot.getValue(Map.class);
                 String message = map.get("message").toString();
                 String userName = map.get("user").toString();
-                System.out.println("kkkkkk");
+                //System.out.println("kkkkkk");
 
                 if(userName.equals(UserDetails.username)){
                     addMessageBox(message, 1);
-                    System.out.println("in message1 box:" + message);
+                    //System.out.println("in message1 box:" + message);
                 }
                 else{
                     addMessageBox(message, 2);
-                    System.out.println("in message2 box:" + message);
+                    //System.out.println("in message2 box:" + message);
+                    makeNot(message, userName);
+                    //System.out.println("makeNot method");
                 }
             }
 
@@ -99,7 +108,55 @@ public class Chat extends AppCompatActivity {
 
             }
         });
+
+        Button buttonShowNotification = findViewById(R.id.show);
+        createNotificationChannel();
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
+                .setSmallIcon(R.drawable.icon3)
+                .setContentTitle("New message")
+                .setContentText("Much longer text that cannot fit one line...")
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText("Much longer text that cannot fit one line..."))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        buttonShowNotification.setOnClickListener(v-> {
+            System.out.println("sdwdadas");
+            notificationManager.notify(100, builder.build());
+
+        });
     }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "channel_name";
+            String description ="channel_description";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel("1", name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+    public void makeNot (String message_m, String name_m){
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
+                .setSmallIcon(R.drawable.icon3)
+                .setContentTitle(name_m)
+                .setContentText("In text")
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(message_m))
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+        notificationManager.notify(100, builder.build());
+    }
+
 
     public void addMessageBox(String message, int type){
         TextView textView = new TextView(Chat.this);

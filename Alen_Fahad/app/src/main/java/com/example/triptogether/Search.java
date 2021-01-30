@@ -128,10 +128,12 @@ public class Search extends AppCompatActivity {
         }
         if (v.getId() == R.id.button5){
             Intent i = new Intent(this, Chat.class);
-            final TextView helloTextView = (TextView) findViewById(R.id.emailtext);
-            helloTextView.getText();
-            UserDetails.chatWith = helloTextView.getText().toString();
-            startActivity(i);
+            TextView helloTextView = findViewById(R.id.emailtext);
+            helloTextView.setText("set text in hello text view");
+            UserDetails.chatWith = "alenz";
+            System.out.println( "The hello text view:" + helloTextView.getText());
+            System.out.println( "The hello text view with string:" + helloTextView.getText().toString());
+            //startActivity(i);
 
         }
     }
