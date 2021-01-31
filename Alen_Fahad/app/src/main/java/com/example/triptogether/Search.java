@@ -28,17 +28,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 
 public class Search extends AppCompatActivity {
 
 
     RecyclerView recview;
     myadapter adapter;
-    private AlertDialog.Builder dialogBuilder;
+    private AlertDialog.Builder dialogBuilder, dialogUserTripBuilder;
     private AlertDialog dialog;
-    private EditText fromCity, toCity, date, time;
-    private Button addTrip, cancel,deleteTrips;
-
+    private EditText fromCity, toCity, date, time, confirmUser;
+    private Button addTrip, cancel,deleteTrips, submitUsername;
+    public String gotUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,16 +129,50 @@ public class Search extends AppCompatActivity {
             createNewTripDialog();
         }
         if (v.getId() == R.id.button5){
-            Intent i = new Intent(this, Chat.class);
-            TextView helloTextView = findViewById(R.id.emailtext);
-            helloTextView.setText("set text in hello text view");
-            UserDetails.chatWith = "alenz";
-            System.out.println( "The hello text view:" + helloTextView.getText());
-            System.out.println( "The hello text view with string:" + helloTextView.getText().toString());
+            //Intent i = new Intent(this, Chat.class);
+            //TextView helloTextView = findViewById(R.id.emailtext);
+            //helloTextView.setText("set text in hello text view");
+            //UserDetails.chatWith = "alenz";
+            tripUserPopupDialog();
+
             //startActivity(i);
 
         }
     }
+
+
+
+    public void tripUserPopupDialog() { //for creating new dialog
+
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View userTripPopupView = getLayoutInflater().inflate(R.layout.confirmuserpopup, null);
+
+        confirmUser = (EditText) userTripPopupView.findViewById(R.id.editConfirmUser);
+
+        dialogBuilder.setView(userTripPopupView);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+       submitUsername = (Button) userTripPopupView.findViewById(R.id.confirmUserButton);
+
+        submitUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // define cancelbutton here
+
+                CallChatActivity(confirmUser.getText().toString());
+                dialog.dismiss();
+            }
+            });
+    }
+
+    public void CallChatActivity(String uname){
+        Intent i = new Intent(this, Chat.class);
+        UserDetails.chatWith = uname;
+        startActivity(i);
+
+    }
+
 
     public void createNewTripDialog() { //for creating new dialog
         dialogBuilder = new AlertDialog.Builder(this);
@@ -167,10 +203,6 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //define savebutton here
-                //Log.println(3,"k1", toCity.getText().toString());
-                //Log.println(3,"k2", date.getText().toString());
-                //Log.println(3,"k3", time.getText().toString());
-                //Log.println(3,"k4", fromCity.getText().toString());
 
                 String fromto = toCity.getText().toString() + " to " + fromCity.getText().toString();
                 String dateTrip = date.getText().toString() ;
@@ -188,8 +220,6 @@ public class Search extends AppCompatActivity {
 
                 DatabaseReference myRef2 = db.getReference("users").child(UserDetails.username).child("email");
                 myRef2.setValue(UserDetails.username);
-
-
 
                 dialog.dismiss();
             }
@@ -226,4 +256,8 @@ public class Search extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 }

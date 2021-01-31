@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -24,6 +25,9 @@ import com.firebase.client.ChildEventListener;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +40,10 @@ public class Chat extends AppCompatActivity {
     EditText messageArea;
     ScrollView scrollView;
     Firebase reference1, reference2;
+    AlertDialog.Builder dialogBuilder;
+    AlertDialog dialog;
+    TextView descriptionText;
+    Button HideDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +72,7 @@ public class Chat extends AppCompatActivity {
                     reference1.push().setValue(map);
                     reference2.push().setValue(map);
                     messageArea.setText("");
+                    messageArea.setTextSize(22);
                 }
             }
         });
@@ -126,6 +135,55 @@ public class Chat extends AppCompatActivity {
             System.out.println("sdwdadas");
             notificationManager.notify(100, builder.build());
 
+
+            dialogBuilder = new AlertDialog.Builder(this);
+            final View userDescrip= getLayoutInflater().inflate(R.layout.othersprofiledescriptionpopup, null);
+
+            descriptionText =  userDescrip.findViewById(R.id.othersDescriptionText);
+
+            dialogBuilder.setView(userDescrip);
+            dialog = dialogBuilder.create();
+            dialog.show();
+
+            HideDescription = (Button) userDescrip.findViewById(R.id.RemoveDescriptionButton);
+
+            FirebaseDatabase db = FirebaseDatabase.getInstance();
+
+            DatabaseReference myRef = db.getReference("users").child(UserDetails.chatWith).child("description");
+            String profileDescContent;
+
+            profileDescContent = descriptionText.getText().toString();
+            profileDescContent =  db.getReference("users").child(UserDetails.chatWith).child("description").toString();
+            descriptionText.setText(profileDescContent);
+
+
+            Firebase.setAndroidContext(this);
+            reference1 = new Firebase(profileDescContent);
+
+            reference1.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    String descp = dataSnapshot.getValue(String.class);
+
+                    descriptionText.setText(descp);
+                }
+
+                @Override
+                public void onCancelled(FirebaseError firebaseError) { }
+            });
+
+
+
+
+            HideDescription.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // define cancelbutton here
+
+
+                    dialog.dismiss();
+                }
+            });
         });
     }
 

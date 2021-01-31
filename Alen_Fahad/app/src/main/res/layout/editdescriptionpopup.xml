@@ -7,8 +7,8 @@
 
     <EditText
         android:id="@+id/editDescriptionText"
-        android:layout_width="302dp"
-        android:layout_height="308dp"
+        android:layout_width="305dp"
+        android:layout_height="251dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="edit here"
@@ -27,9 +27,9 @@
         android:text="submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editDescriptionText"
-        app:layout_constraintHorizontal_bias="0.899"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editDescriptionText"
         app:layout_constraintTop_toBottomOf="@+id/editDescriptionText"
-        app:layout_constraintVertical_bias="0.285" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
