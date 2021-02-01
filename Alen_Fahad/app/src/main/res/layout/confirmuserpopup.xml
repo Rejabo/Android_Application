@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <TextView
         android:id="@+id/textView"
@@ -12,31 +13,36 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="122dp"
         android:layout_marginLeft="122dp"
+        android:layout_marginTop="90dp"
         android:text="Confirm the other users name"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="@+id/editConfirmUser"
-        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editConfirmUser"
-        tools:layout_editor_absoluteY="329dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editConfirmUser"
         android:layout_width="179dp"
         android:layout_height="73dp"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.297" />
 
     <Button
         android:id="@+id/confirmUserButton"
         android:layout_width="102dp"
         android:layout_height="43dp"
+        android:layout_marginTop="8dp"
         android:layout_marginBottom="228dp"
+        android:background="@drawable/button_background"
         android:text="Confirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editConfirmUser"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/editConfirmUser"
         app:layout_constraintTop_toBottomOf="@+id/editConfirmUser"
-        app:layout_constraintVertical_bias="0.137" />
+        app:layout_constraintVertical_bias="0.29000002" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
 
     <EditText
         android:id="@+id/editDescriptionText"
@@ -11,6 +12,7 @@
         android:layout_height="251dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@color/white"
         android:text="edit here"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,6 +26,7 @@
         android:layout_height="67dp"
         android:layout_marginBottom="172dp"
         android:onClick="onClick"
+        android:background="@drawable/button_background"
         android:text="submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editDescriptionText"

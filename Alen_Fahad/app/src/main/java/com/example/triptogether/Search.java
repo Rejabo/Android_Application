@@ -53,7 +53,7 @@ public class Search extends AppCompatActivity {
 
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users").orderByChild("name"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users").orderByChild("name").startAt("-"), model.class)
                        .build();
 
         adapter=new myadapter(options);
@@ -102,7 +102,7 @@ public class Search extends AppCompatActivity {
     {
         FirebaseRecyclerOptions<model> options =
                 new FirebaseRecyclerOptions.Builder<model>()
-                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users").orderByChild("trips").startAt(s).endAt(s+"\uf8ff"), model.class)
+                        .setQuery(FirebaseDatabase.getInstance().getReference().child("users").orderByChild("trips").startAt("-").endAt(s+"\uf8ff"), model.class)
                         .build();
 
         adapter=new myadapter(options);
@@ -204,7 +204,7 @@ public class Search extends AppCompatActivity {
             public void onClick(View v) {
                 //define savebutton here
 
-                String fromto = toCity.getText().toString() + " to " + fromCity.getText().toString();
+                String fromto = "-" + toCity.getText().toString() + " to " + fromCity.getText().toString();
                 String dateTrip = date.getText().toString() ;
                 String timeTrip = time.getText().toString();
 
