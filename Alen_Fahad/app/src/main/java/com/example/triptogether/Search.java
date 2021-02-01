@@ -216,7 +216,7 @@ public class Search extends AppCompatActivity {
                 myRef.setValue(fromto);
 
                 DatabaseReference myRef1 = db.getReference("users").child(UserDetails.username).child("course");
-                myRef1.setValue(dateTrip + "at time:" + timeTrip);
+                myRef1.setValue(dateTrip + ", at time: " + timeTrip);
 
                 DatabaseReference myRef2 = db.getReference("users").child(UserDetails.username).child("email");
                 myRef2.setValue(UserDetails.username);
