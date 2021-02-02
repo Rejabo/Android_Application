@@ -128,15 +128,8 @@ public class Search extends AppCompatActivity {
         if (v.getId() == R.id.addButton){
             createNewTripDialog();
         }
-        if (v.getId() == R.id.button5){
-            //Intent i = new Intent(this, Chat.class);
-            //TextView helloTextView = findViewById(R.id.emailtext);
-            //helloTextView.setText("set text in hello text view");
-            //UserDetails.chatWith = "alenz";
+        if (v.getId() == R.id.button5){      
             tripUserPopupDialog();
-
-            //startActivity(i);
-
         }
     }
 
@@ -177,6 +170,7 @@ public class Search extends AppCompatActivity {
     public void createNewTripDialog() { //for creating new dialog
         dialogBuilder = new AlertDialog.Builder(this);
         final View tripPopupView = getLayoutInflater().inflate(R.layout.popup, null);
+
         toCity = (EditText) tripPopupView.findViewById(R.id.toCity);
         toCity = (EditText) tripPopupView.findViewById(R.id.toCity);
         fromCity = (EditText) tripPopupView.findViewById(R.id.fromCity);
@@ -187,15 +181,14 @@ public class Search extends AppCompatActivity {
         cancel = (Button) tripPopupView.findViewById(R.id.cancelButton);
         deleteTrips = (Button) tripPopupView.findViewById(R.id.deleteTripsButton);
 
+
         dialogBuilder.setView(tripPopupView);
         dialog = dialogBuilder.create();
         dialog.show();
 
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         Login loginref = new Login();
-        //Log.d("HORUNGEOGNGE", loginref.writtenuser);
-        //DatabaseReference myRef = db.getReference("trips").child(loginref.writtenuser);
-        //DatabaseReference myRef = db.getReference("users").child("AA").child("trips");
+        
         DatabaseReference myRef = db.getReference("users").child(UserDetails.username).child("trips");
 
 
