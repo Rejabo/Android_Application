@@ -83,17 +83,17 @@ public class Chat extends AppCompatActivity {
                 Map map = dataSnapshot.getValue(Map.class);
                 String message = map.get("message").toString();
                 String userName = map.get("user").toString();
-                //System.out.println("kkkkkk");
+               
 
                 if(userName.equals(UserDetails.username)){
                     addMessageBox(message, 1);
-                    //System.out.println("in message1 box:" + message);
+                   
                 }
                 else{
                     addMessageBox(message, 2);
-                    //System.out.println("in message2 box:" + message);
+                  
                     makeNot(message, userName);
-                    //System.out.println("makeNot method");
+                 
                 }
             }
 
