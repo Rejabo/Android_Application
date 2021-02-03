@@ -83,17 +83,17 @@ public class Chat extends AppCompatActivity {
                 Map map = dataSnapshot.getValue(Map.class);
                 String message = map.get("message").toString();
                 String userName = map.get("user").toString();
-                //System.out.println("kkkkkk");
+               
 
                 if(userName.equals(UserDetails.username)){
                     addMessageBox(message, 1);
-                    //System.out.println("in message1 box:" + message);
+                   
                 }
                 else{
                     addMessageBox(message, 2);
-                    //System.out.println("in message2 box:" + message);
+                  
                     makeNot(message, userName);
-                    //System.out.println("makeNot method");
+                 
                 }
             }
 
@@ -154,7 +154,7 @@ public class Chat extends AppCompatActivity {
 
             profileDescContent = descriptionText.getText().toString();
             profileDescContent =  db.getReference("users").child(UserDetails.chatWith).child("description").toString();
-            descriptionText.setText(profileDescContent);
+            //descriptionText.setText(profileDescContent);
 
 
             Firebase.setAndroidContext(this);
@@ -226,10 +226,12 @@ public class Chat extends AppCompatActivity {
         if(type == 1) {
             lp2.gravity = Gravity.LEFT;
             textView.setBackgroundResource(R.drawable.bubble_in);
+            textView.setTextSize(22);
         }
         else{
             lp2.gravity = Gravity.RIGHT;
             textView.setBackgroundResource(R.drawable.bubble_out);
+            textView.setTextSize(22);
         }
         textView.setLayoutParams(lp2);
         layout.addView(textView);

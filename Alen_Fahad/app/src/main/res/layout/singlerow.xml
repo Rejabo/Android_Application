@@ -10,7 +10,7 @@
     <RelativeLayout
         android:layout_width="399dp"
         android:layout_height="161dp"
-        android:background="@drawable/bubble_in"
+        android:background="#8b8989"
         android:padding="15dp">
 
         <de.hdodenhof.circleimageview.CircleImageView

@@ -29,7 +29,7 @@
         android:layout_height="196dp"
         android:layout_marginTop="220dp"
         android:textColor="#000"
-        android:background="@drawable/bubble_in"
+        android:background="#8b8989"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/searchButton"
         app:layout_constraintEnd_toEndOf="parent"
