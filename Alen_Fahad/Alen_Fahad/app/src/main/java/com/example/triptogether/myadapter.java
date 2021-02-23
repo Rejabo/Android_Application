@@ -44,9 +44,7 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
         holder.email.setText(model.getEmail());
         al.add(model.getEmail());
 
-        Log.d("model key:", model.getEmail());
-        Log.d("al al al", String.valueOf(al.size()));
-        Log.d("al position", String.valueOf(position));
+     
         Glide.with(holder.img.getContext()).load(model.getPurl()).into(holder.img);
 
 
