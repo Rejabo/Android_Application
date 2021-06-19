@@ -1,4 +1,4 @@
-package com.example.triptogether;
+package com.example.MainActivites;
 
 import android.content.Intent;
 import android.util.Log;
@@ -44,9 +44,7 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
         holder.email.setText(model.getEmail());
         al.add(model.getEmail());
 
-        Log.d("model key:", model.getEmail());
-        Log.d("al al al", String.valueOf(al.size()));
-        Log.d("al position", String.valueOf(position));
+     
         Glide.with(holder.img.getContext()).load(model.getPurl()).into(holder.img);
 
 
@@ -54,7 +52,7 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
             @Override
             public void onClick(View view) {
                 if (view.getId() == R.id.button5) {
-                    Log.d("HA TY KURWO", "KOSKESH");
+
                 }
 
             }
@@ -64,14 +62,7 @@ public class myadapter extends FirebaseRecyclerAdapter<model,myadapter.myviewhol
 
     public void onClick(View v) {
         if (v.getId() == R.id.button5){
-            //Intent i = new Intent(this, Chat.class);
-            //TextView helloTextView = findViewById(R.id.emailtext);
-            //helloTextView.setText("set text in hello text view");
-            //UserDetails.chatWith = "alenz";
-            Log.d("HA K", String.valueOf(rv_list_frames.getChildPosition(v)));
 
-
-            //startActivity(i);
 
         }
     }

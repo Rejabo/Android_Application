@@ -1,4 +1,4 @@
-package com.example.triptogether;
+package com.example.MainActivites;
 
 import androidx.recyclerview.widget.RecyclerView;
 

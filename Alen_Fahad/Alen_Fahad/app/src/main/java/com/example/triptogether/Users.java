@@ -1,4 +1,4 @@
-package com.example.triptogether;
+package com.example.MainActivites;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

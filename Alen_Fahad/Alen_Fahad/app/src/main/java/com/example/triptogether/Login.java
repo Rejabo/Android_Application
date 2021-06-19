@@ -1,4 +1,4 @@
-package com.example.triptogether;
+package com.example.MainActivites;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.triptogether.databinding.ActivityLoginBinding;
+import com.example.MainActivites.databinding.ActivityLoginBinding;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,12 +1,10 @@
-package com.example.triptogether;
+package com.example.MainActivites;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -19,9 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -74,7 +70,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d("KOSKESHKURWA", String.valueOf(recview.getChildItemId(v)));
+              ;
                 recview.getChildItemId(v);
             }
         });
@@ -149,13 +145,9 @@ public class Search extends AppCompatActivity {
         if (v.getId() == R.id.addButton){
             createNewTripDialog();
         }
-       /* if (v.getId() == R.id.button5){
+      
 
-            //tripUserPopupDialog();
-            //recview.getChildItemId(recview);
-            Log.d("KOSKESHKURWA", String.valueOf(recview.getChildItemId(v)));
-
-        }*/
+  
     }
 
 

@@ -1,1 +1,0 @@
-Trip Together App

@@ -1,4 +1,4 @@
-package com.example.triptogether;
+package com.example.MainActivites;
 
 import android.view.LayoutInflater;
 import android.view.View;

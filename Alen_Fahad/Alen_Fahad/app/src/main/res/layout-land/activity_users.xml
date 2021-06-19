@@ -8,7 +8,7 @@
     android:baselineAligned="false"
     android:contentDescription="ChatButton"
     android:background="@drawable/bak"
-    tools:context="com.example.triptogether.Users"
+    tools:context="com.example.MainActivites.UserList"
     tools:viewBindingIgnore="true">
 
     <TextView
