@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.triptogether">
+    package="com.example.MainActivites">
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
@@ -18,7 +18,7 @@
         android:roundIcon="@drawable/icon3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.triptogether.Login">
+        <activity android:name="com.example.MainActivites.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,52 +26,52 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Register"
-            android:parentActivityName=".Login">
+        <activity android:name="com.example.MainActivites.Register"
+            android:parentActivityName="com.example.MainActivites.Login">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MainActivites.MainActivity" />
         </activity>
 
-        <activity android:name=".Users"
-            android:parentActivityName=".Login">
+        <activity android:name="com.example.MainActivites.UserList"
+            android:parentActivityName="com.example.MainActivites.Login">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MainActivites.MainActivity" />
         </activity>
 
-        <activity android:name=".Chat"
-            android:parentActivityName=".Users">
+        <activity android:name="com.example.MainActivites.Chat"
+            android:parentActivityName="com.example.MainActivites.UserList">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MainActivites.MainActivity" />
         </activity>
 
-        <activity android:name=".Search"
-            android:parentActivityName=".Chat">
+        <activity android:name="SearchActivity.Search"
+            android:parentActivityName="com.example.MainActivites.Chat">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MainActivites.MainActivity" />
         </activity>
 
-        <activity android:name=".MainActivity"
-            android:parentActivityName=".Search">
+        <activity android:name="com.example.MainActivites.MainActivity"
+            android:parentActivityName="SearchActivity.Search">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MainActivites.MainActivity" />
         </activity>
 
-        <activity android:name=".Youtube"
-            android:parentActivityName=".Users">
+        <activity android:name="YoutubeActivity.Youtube"
+            android:parentActivityName="com.example.MainActivites.UserList">
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value="com.example.MainActivites.MainActivity" />
         </activity>
 
 
