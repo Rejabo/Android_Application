@@ -30,7 +30,6 @@ public class Register extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-
         Firebase.setAndroidContext(this);
 
         binding.loginButton.setOnClickListener(v ->

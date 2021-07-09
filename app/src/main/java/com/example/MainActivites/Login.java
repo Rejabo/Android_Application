@@ -3,6 +3,7 @@ package com.example.MainActivites;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ public class Login extends AppCompatActivity {
         setContentView(view);
 
         checkConnection();
+        //onPause();
+        onResume();
 
 
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
@@ -91,9 +94,33 @@ public class Login extends AppCompatActivity {
             }
 
         });
+        checkConnection();
+    }
+
+
+    chargeBroadcastReceiver chargebroadcastreceiver;
+
+
+    protected void onPause() {
+    super.onPause();
+    unregisterReceiver(chargebroadcastreceiver);
+    }
+
+
+    protected void onResume() {
+        super.onResume();
+
+        chargebroadcastreceiver = new chargeBroadcastReceiver();
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_POWER_CONNECTED);
+        intentFilter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+
+        registerReceiver(chargebroadcastreceiver, intentFilter);
     }
 
     public void checkConnection() {
+
         ConnectivityManager manger = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo activeNetwork = manger.getActiveNetworkInfo();

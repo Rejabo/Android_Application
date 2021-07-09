@@ -74,6 +74,7 @@
                 android:value="com.example.MainActivites.MainActivity" />
         </activity>
 
+        <receiver android:name=".chargeBroadcastReceiver"> </receiver>
 
     </application>
 

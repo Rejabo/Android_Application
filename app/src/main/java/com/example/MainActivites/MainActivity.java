@@ -1,10 +1,21 @@
 package com.example.MainActivites;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +25,8 @@ import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import SearchActivity.Search;
 
 import static maes.tech.intentanim.CustomIntent.customType;  ///ANIMATION
 
@@ -31,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
     public String profileDescContent;
 
     Firebase reference1;
-    //ImageView mImageView;
-    //Button mChooseBtn;
+    ImageView mImageView;
+    Button mChooseBtn;
 
 
     @Override
@@ -66,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(FirebaseError firebaseError) { }
         });
 
-        /*
+
         mImageView = findViewById(R.id.imageView);
         mChooseBtn = findViewById(R.id.imageButton);
 
@@ -88,11 +101,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 }
         });
-
-         */
     }
 
-    /*
     private void pickImageFromGallery(){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
@@ -194,8 +204,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-*/
-
-
 }
