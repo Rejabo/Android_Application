@@ -18,6 +18,7 @@
         android:roundIcon="@drawable/icon3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name="com.example.MainActivites.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +45,7 @@
 
         <activity android:name="com.example.MainActivites.Chat"
             android:parentActivityName="com.example.MainActivites.UserList">
+            android:configChanges="keyboardHidden|orientation"
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -52,6 +54,8 @@
 
         <activity android:name="SearchActivity.Search"
             android:parentActivityName="com.example.MainActivites.Chat">
+            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+            android:configChanges="keyboardHidden|orientation"
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -60,6 +64,7 @@
 
         <activity android:name="com.example.MainActivites.MainActivity"
             android:parentActivityName="SearchActivity.Search">
+            android:configChanges="keyboardHidden|orientation"
             <!-- The meta-data tag is required if you support API level 15 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

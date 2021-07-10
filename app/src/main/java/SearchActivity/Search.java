@@ -2,6 +2,8 @@ package SearchActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -85,6 +87,14 @@ public class Search extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         adapter.stopListening();
+    }
+
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+
+        createNewTripDialog();
     }
 
 
@@ -268,4 +278,5 @@ public class Search extends AppCompatActivity {
             }
         });
     }
+
 }
