@@ -1,33 +1,27 @@
 package SearchActivity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SearchView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.MainActivites.Login;
 import com.example.MainActivites.MainActivity;
 import com.example.MainActivites.R;
 import com.example.MainActivites.UserDetails;
 import com.example.MainActivites.UserList;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import androidx.appcompat.app.AlertDialog;
-
-import android.util.Log;
-import android.widget.Button;
-import android.widget.EditText;
 
 import java.util.ArrayList;
 
@@ -69,7 +63,6 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Log.d("KOSKESHKURWA", String.valueOf(recview.getChildItemId(v)));
                 recview.getChildItemId(v);
             }
         });
