@@ -30,6 +30,7 @@ import YoutubeActivity.Youtube;
 import static maes.tech.intentanim.CustomIntent.customType;  ///ANIMATION
 
 
+
 public class UserList extends AppCompatActivity {
     ListView usersList;
     TextView noUsersText;
@@ -91,12 +92,10 @@ public class UserList extends AppCompatActivity {
 
                 totalUsers++;
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-        if(totalUsers <=1){
+        if(totalUsers <=1) {
             noUsersText.setVisibility(View.VISIBLE);
             usersList.setVisibility(View.GONE);
         }
@@ -105,7 +104,6 @@ public class UserList extends AppCompatActivity {
             usersList.setVisibility(View.VISIBLE);
             usersList.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, al));
         }
-
         pd.dismiss();
     }
 

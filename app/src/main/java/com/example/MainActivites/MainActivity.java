@@ -1,13 +1,10 @@
 package com.example.MainActivites;
 
-import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.Menu;
@@ -21,10 +18,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
 import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
@@ -51,17 +48,14 @@ public class MainActivity extends AppCompatActivity {
     private Button submitEdition;
     private static final int IMAGE_PICK_CODE = 1000;
     private static final int PERMISSION_CODE = 1001;
+    private static final int REQUEST_PERMISSION = 0;
+
 
     public TextView profileDesc;
     public String profileDescContent;
 
     Firebase reference1;
-    ImageView mImageView;
-    Button mChooseBtn;
-
-
     Button btnbrowse, btnupload;
-    EditText txtdata ;
     ImageView imgview;
     Uri FilePathUri;
     StorageReference storageReference;
@@ -78,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         customType(MainActivity.this,"right-to-left");
 
+
         FirebaseDatabase db = FirebaseDatabase.getInstance();
 
         DatabaseReference myRef = db.getReference("users").child(UserDetails.username).child("description");
@@ -85,17 +80,17 @@ public class MainActivity extends AppCompatActivity {
         profileDesc = findViewById(R.id.profileDescription);
         profileDescContent = profileDesc.getText().toString();
         profileDescContent =  db.getReference("users").child(UserDetails.username).child("description").toString();
-        //profileDesc.setText(profileDescContent);
 
 
         Firebase.setAndroidContext(this);
         reference1 = new Firebase(profileDescContent);
 
+
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                String descp = dataSnapshot.getValue(String.class);
 
+                String descp = dataSnapshot.getValue(String.class);
                 profileDesc.setText(descp);
             }
 
@@ -104,36 +99,13 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        mImageView = findViewById(R.id.imageView);
-        mChooseBtn = findViewById(R.id.imageButton);
-
-        mChooseBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                        String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                        requestPermissions(permission, PERMISSION_CODE);
-                    }
-                    else {
-                        pickImageFromGallery();
-
-                    }
-                }
-                else {
-                    pickImageFromGallery();
-                }
-            }
-        });
-
-        storageReference = FirebaseStorage.getInstance().getReference("Images");
-        //databaseReference = FirebaseDatabase.getInstance().getReference("Images");
-        databaseReference = db.getReference("users").child(UserDetails.username).child("image");
-        btnbrowse = (Button)findViewById(R.id.imageButton);
-        btnupload= (Button)findViewById(R.id.button_upload);
-        //txtdata = (EditText)findViewById(R.id.txtdata);
-        imgview = (ImageView)findViewById(R.id.imageView);
-        progressDialog = new ProgressDialog(MainActivity.this);// context name as per your project name
+       Firebase.setAndroidContext(this);
+       storageReference = FirebaseStorage.getInstance().getReference("Images");
+       databaseReference = db.getReference("users");
+       btnbrowse = (Button)findViewById(R.id.imageButton);
+       btnupload= (Button)findViewById(R.id.button_upload);
+       imgview = (ImageView)findViewById(R.id.imageView);
+       progressDialog = new ProgressDialog(MainActivity.this);// context name as per your project name
 
 
         btnbrowse.setOnClickListener(new View.OnClickListener() {
@@ -158,13 +130,15 @@ public class MainActivity extends AppCompatActivity {
         myRef = db.getReference("users").child(UserDetails.chatWith).child("image");
     }
 
+
     @Override
     protected void onStart() {
         super.onStart();
-
-        System.out.println("1ONSTARTTTTT");
+            if (UserDetails.uri != null) {
+                System.out.println("in onStart" + UserDetails.uri);
+                Glide.with(getApplicationContext()).load(UserDetails.uri).into(imgview);
     }
-
+}
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -174,9 +148,10 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == Image_Request_Code && resultCode == RESULT_OK && data != null && data.getData() != null) {
 
             FilePathUri = data.getData();
+            UserDetails.uri = FilePathUri;
 
             try {
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), FilePathUri);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), UserDetails.uri);
                 imgview.setImageBitmap(bitmap);
             }
             catch (IOException e) {
@@ -188,11 +163,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     public String GetFileExtension(Uri uri) {
-
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri)) ;
-
     }
 
 
@@ -211,47 +184,16 @@ public class MainActivity extends AppCompatActivity {
                             //String TempImageName = txtdata.getText().toString().trim();
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
-                            @SuppressWarnings("VisibleForTests")
                             UploadInfo imageUploadInfo = new UploadInfo(taskSnapshot.getUploadSessionUri().toString());
-                            String ImageUploadId = databaseReference.push().getKey();
-                            databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+                            //String ImageUploadId = databaseReference.push().getKey();
+                            databaseReference.child(UserDetails.username).child("image").setValue(imageUploadInfo);
                         }
                     });
-        }
-        else {
-
+        } else {
             Toast.makeText(MainActivity.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
-
         }
     }
 
-
-
-    private void pickImageFromGallery() {
-        Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType("image/*");
-        startActivityForResult(intent, IMAGE_PICK_CODE);
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult (int requestCode, @NonNull String[] permission, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case PERMISSION_CODE: {
-                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    pickImageFromGallery();
-                }
-            }
-        }
-    }
-
-/*    @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == IMAGE_PICK_CODE) {
-            mImageView.setImageURI(data.getData());
-        }
-    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -317,11 +259,8 @@ public class MainActivity extends AppCompatActivity {
 
                 DatabaseReference myRef = db.getReference("users").child(UserDetails.username).child("description");
 
-
-                //profileDescContent = edit_text_string;
                 myRef.setValue((edit_text_string));
-
-
+                
                 profileDesc.setText(edit_text_string);
 
                 dialog.dismiss();

@@ -43,7 +43,7 @@
         android:layout_width="388dp"
         android:layout_height="196dp"
         android:layout_marginTop="220dp"
-        android:background="@drawable/bubble_in"
+        android:background="#8b8989"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/searchButton"

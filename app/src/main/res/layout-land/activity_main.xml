@@ -9,6 +9,21 @@
 
 
     <Button
+        android:id="@+id/button_upload"
+        android:layout_width="95dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="172dp"
+        android:layout_marginLeft="172dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_background"
+        android:onClick="onClick"
+        android:text="Upload Image"
+        app:layout_constraintBottom_toTopOf="@+id/searchButton"
+        app:layout_constraintStart_toEndOf="@+id/editDescriptionButton"
+        app:layout_constraintTop_toBottomOf="@+id/profileDescription"
+        app:layout_constraintVertical_bias="0.162" />
+
+    <Button
         android:id="@+id/imageButton"
         android:layout_width="95dp"
         android:layout_height="45dp"

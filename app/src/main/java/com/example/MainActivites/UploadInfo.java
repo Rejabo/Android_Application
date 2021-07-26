@@ -5,7 +5,6 @@ package com.example.MainActivites;
 
 public class UploadInfo {
 
-    //public String imageName;
     public String imageURL;
     public UploadInfo(){}
 
@@ -14,9 +13,6 @@ public class UploadInfo {
     }
 
 
-/*    public String getImageName() {
-        return imageName;
-    }*/
 
     public String getImageURL() {
         return imageURL;
